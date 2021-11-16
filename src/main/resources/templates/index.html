@@ -2,215 +2,181 @@
 <html lang="en" dir="ltr" xmlns:th="https://www.thymeleaf.org">
 
 <head>
-  <meta charset="UTF-8">
-  <title>Quizz</title>
-  <link rel="stylesheet" href="css/style.css">
-  <!-- Boxicons CDN Link -->
-  <link href='https://unpkg.com/boxicons@2.0.7/css/boxicons.min.css' rel='stylesheet'>
-  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta charset="UTF-8">
+    <title>Quizz</title>
+    <link rel="stylesheet" href="/css/style.css">
+    <!-- Boxicons CDN Link -->
+    <link href='https://unpkg.com/boxicons@2.0.7/css/boxicons.min.css' rel='stylesheet'>
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
 
-  <!--===============================================================================================-->
-  <link rel="icon" type="image/png" href="images/icons/favicon.ico" />
-  <!--===============================================================================================-->
-  <link rel="stylesheet" type="text/css" href="vendor/bootstrap/css/bootstrap.min.css">
-  <!--===============================================================================================-->
-  <link rel="stylesheet" type="text/css" href="fonts/font-awesome-4.7.0/css/font-awesome.min.css">
-  <!--===============================================================================================-->
-  <link rel="stylesheet" type="text/css" href="fonts/Linearicons-Free-v1.0.0/icon-font.min.css">
-  <!--===============================================================================================-->
-  <link rel="stylesheet" type="text/css" href="vendor/animate/animate.css">
-  <!--===============================================================================================-->
-  <link rel="stylesheet" type="text/css" href="vendor/css-hamburgers/hamburgers.min.css">
-  <!--===============================================================================================-->
-  <link rel="stylesheet" type="text/css" href="vendor/animsition/css/animsition.min.css">
-  <!--===============================================================================================-->
-  <link rel="stylesheet" type="text/css" href="vendor/select2/select2.min.css">
-  <!--===============================================================================================-->
-  <link rel="stylesheet" type="text/css" href="vendor/daterangepicker/daterangepicker.css">
-  <!--===============================================================================================-->
-  <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Roboto|Varela+Round|Open+Sans">
-  <!--===============================================================================================-->
-  <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.0/css/bootstrap.min.css">
-  <!--===============================================================================================-->
-  <link rel="stylesheet" href="https://fonts.googleapis.com/icon?family=Material+Icons">
-  <!--===============================================================================================-->
-  <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/font-awesome/4.7.0/css/font-awesome.min.css">
-  <!--===============================================================================================-->
-  <link rel="stylesheet" type="text/css" href="css/util.css">
-  <link rel="stylesheet" type="text/css" href="css/main.css">
-  <link rel="stylesheet" type="text/css" href="css/score_grades.css">
-  <!--===============================================================================================-->
+    <!--===============================================================================================-->
+    <link rel="icon" type="image/png" href="/images/icons/favicon.ico"/>
+    <!--===============================================================================================-->
+    <link rel="stylesheet" type="text/css" href="/vendor/bootstrap/css/bootstrap.min.css">
+    <!--===============================================================================================-->
+    <link rel="stylesheet" type="text/css" href="/fonts/font-awesome-4.7.0/css/font-awesome.min.css">
+    <!--===============================================================================================-->
+    <link rel="stylesheet" type="text/css" href="/fonts/Linearicons-Free-v1.0.0/icon-font.min.css">
+    <!--===============================================================================================-->
+    <link rel="stylesheet" type="text/css" href="/vendor/animate/animate.css">
+    <!--===============================================================================================-->
+    <link rel="stylesheet" type="text/css" href="/vendor/css-hamburgers/hamburgers.min.css">
+    <!--===============================================================================================-->
+    <link rel="stylesheet" type="text/css" href="/vendor/animsition/css/animsition.min.css">
+    <!--===============================================================================================-->
+    <link rel="stylesheet" type="text/css" href="/vendor/select2/select2.min.css">
+    <!--===============================================================================================-->
+    <link rel="stylesheet" type="text/css" href="/vendor/daterangepicker/daterangepicker.css">
+    <!--===============================================================================================-->
+    <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Roboto|Varela+Round|Open+Sans">
+    <!--===============================================================================================-->
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.0/css/bootstrap.min.css">
+    <!--===============================================================================================-->
+    <link rel="stylesheet" href="https://fonts.googleapis.com/icon?family=Material+Icons">
+    <!--===============================================================================================-->
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/font-awesome/4.7.0/css/font-awesome.min.css">
+    <!--===============================================================================================-->
+    <link rel="stylesheet" type="text/css" href="/css/util.css">
+    <link rel="stylesheet" type="text/css" href="/css/main.css">
+    <link rel="stylesheet" type="text/css" href="/css/score_grades.css">
+    <!--===============================================================================================-->
 </head>
 
 <body>
-  <div class="sidebar">
-    <div class="logo-details">
-      <i class='bx bxl-c-plus-plus icon'></i>
-      <div class="logo_name">My Team</div>
-      <i class='bx bx-menu' id="btn"></i>
-    </div>
-    <ul class="nav-list">
+<!-- Begin of slidebar-->
+<div th:include="common/slidebar.html"></div>
 
-      <li>
-        <a id="1" href="#" onclick="onclick_load(this.id)">
-          <i class='bx bx-grid-alt'></i>
-          <span class="links_name">Dashboard</span>
-        </a>
-        <span class="tooltip">Dashboard</span>
-      </li>
-      &nbsp;
-      <li>
-        <a id="2" href="#" onclick="onclick_load(this.id)">
-          <i class='bx bx-user'></i>
-          <span class="links_name">Grades</span>
-        </a>
-        <span class="tooltip">Grades</span>
-      </li>
 
-      &nbsp;
+<section id="dashboard" class="home-section" style="display: inline-block;">
 
-      <li>
-        <a id="3" href="#" onclick="onclick_load(this.id)">
-          <i class='bx bx-log-out'></i>
-          <span class="links_name">Logout</span>
-        </a>
-        <span class="tooltip">Logout</span>
-      </li>
-
-    </ul>
-  </div>
-
-  <section id="dashboard" class="home-section" style="display: inline-block;">
-
-    <!--  -->
+    <!--  Begin of content  -->
     <div class="container-xl">
-      <div class="table-responsive">
-        <div class="table-wrapper">
-          <div class="table-title">
-            <div class="row">
-              <div class="col-sm-8">
-                <h2>List <b>Course</b></h2>
-              </div>
+        <div class="table-responsive">
+            <div class="table-wrapper">
+                <div class="table-title">
+                    <div class="row">
+                        <div class="col-sm-8">
+                            <h2>List <b>Course</b></h2>
+                        </div>
 
-              <div class="col-sm-4">
-                <div class="search-box">
-                  <i class="material-icons">&#xE8B6;</i>
-                  <input type="text" class="form-control" placeholder="Search&hellip;">
+                        <div class="col-sm-4">
+
+
+                            <div class="search-box">
+
+                                <i class="material-icons">&#xE8B6;</i>
+                                <form th:action="@{/course/search}" method="get">
+                                    <input type="text" class="form-control" name="keyword" th:value="${keyword}"
+                                           placeholder="Search&hellip;">
+
+                                </form>
+                            </div>
+
+
+                        </div>
+
+                    </div>
                 </div>
-              </div>
+                <table class="table table-striped table-hover table-bordered">
+                    <thead>
+                    <tr>
+                        <th>Id</th>
+                        <th>Course Name</th>
+                        <th>Description</th>
+                        <th>Actions</th>
+                    </tr>
+                    </thead>
+                    <tbody>
+                    <tr th:each="course: ${LIST_COURSE}">
+                        <td th:text="${course.id}"></td>
+                        <td th:text="${course.courseName}"></td>
+                        <td th:text="${course.description}"></td>
+                        <td>
+                            <a href="#" class="btn btn-primary text-light">View Quiz</a>
+                        </td>
+                    </tr>
 
+                    </tbody>
+                </table>
             </div>
-          </div>
-          <table class="table table-striped table-hover table-bordered">
-            <thead>
-              <tr>
-                <th>Name</th>
-                <th>Time</th>
-                <th>Status</th>
-                <th>Actions</th>
-              </tr>
-            </thead>
-            <tbody>
-              <tr>
-                <td>Java</td>
-                <td>100 Minutes</td>
-                <td class="text-success">True</td>
-                <td>
-                  <a href="#" class="btn btn-primary text-light">Join</a>
-                </td>
-              </tr>
-
-              <tr>
-                <td>C#</td>
-                <td>100 Minutes</td>
-                <td class="text-danger">False</td>
-                <td>
-                  <a href="#" class="btn btn-primary text-light">Join</a>
-                </td>
-              </tr>
-
-            </tbody>
-          </table>
         </div>
-      </div>
     </div>
     <!--  -->
-  </section>
+</section>
 
-  <section id="grades" class="home-section" style="display: none;">
+<section id="grades" class="home-section" style="display: none;">
     <div class="container">
-      <div class="table-responsive">
-        <div class="table-wrapper">
-          <div class="table-title">
-            <div class="row">
-              <div class="col-sm-12">
-                <h2>Score <b>Report</b></h2>
-              </div>
+        <div class="table-responsive">
+            <div class="table-wrapper">
+                <div class="table-title">
+                    <div class="row">
+                        <div class="col-sm-12">
+                            <h2>Score <b>Report</b></h2>
+                        </div>
+                    </div>
+                </div>
+                <table class="table table-bordered">
+                    <thead>
+                    <tr>
+                        <th>Name</th>
+                        <th>Course</th>
+                        <th>Grade</th>
+                    </tr>
+                    </thead>
+                    <tbody>
+                    <tr>
+                        <td>John Doe</td>
+                        <td>Java</td>
+                        <td>100/100</td>
+                    </tr>
+                    <tr>
+                        <td>John Doe</td>
+                        <td>Java</td>
+                        <td>100/100</td>
+                    </tr>
+                    <tr>
+                        <td>John Doe</td>
+                        <td>Java</td>
+                        <td>100/100</td>
+                    </tr>
+                    <tr>
+                        <td>John Doe</td>
+                        <td>Java</td>
+                        <td>100/100</td>
+                    </tr>
+                    </tbody>
+                </table>
             </div>
-          </div>
-          <table class="table table-bordered">
-            <thead>
-              <tr>
-                <th>Name</th>
-                <th>Course</th>
-                <th>Grade</th>
-              </tr>
-            </thead>
-            <tbody>
-              <tr>
-                <td>John Doe</td>
-                <td>Java</td>
-                <td>100/100</td>
-              </tr>
-              <tr>
-                <td>John Doe</td>
-                <td>Java</td>
-                <td>100/100</td>
-              </tr>
-              <tr>
-                <td>John Doe</td>
-                <td>Java</td>
-                <td>100/100</td>
-              </tr>
-              <tr>
-                <td>John Doe</td>
-                <td>Java</td>
-                <td>100/100</td>
-              </tr>
-            </tbody>
-          </table>
         </div>
-      </div>
     </div>
-  </section>
+</section>
 
 
-
-  <script>
+<script>
     function onclick_load(id) {
-      switch (id) {
-        case "1": {
-          document.getElementById("dashboard").style.display = "inline-block";
-          document.getElementById("grades").style.display = "none";
-          break;
+        switch (id) {
+            case "1": {
+                document.getElementById("dashboard").style.display = "inline-block";
+                document.getElementById("grades").style.display = "none";
+                break;
+            }
+            case "2": {
+                document.getElementById("dashboard").style.display = "none";
+                document.getElementById("grades").style.display = "inline-block";
+                break;
+            }
         }
-        case "2": {
-          document.getElementById("dashboard").style.display = "none";
-          document.getElementById("grades").style.display = "inline-block";
-          break;
-        }
-      }
     }
-  </script>
-  <!--===============================================================================================-->
-  <script src="js/script.js"></script>
-  <!--===============================================================================================-->
-  <script src="https://code.jquery.com/jquery-3.5.1.min.js"></script>
-  <!--===============================================================================================-->
-  <script src="https://cdn.jsdelivr.net/npm/popper.js@1.16.0/dist/umd/popper.min.js"></script>
-  <!--===============================================================================================-->
-  <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.5.0/js/bootstrap.min.js"></script>
-  <!--===============================================================================================-->
+</script>
+<!--===============================================================================================-->
+<script src="/js/script.js"></script>
+<!--===============================================================================================-->
+<script src="https://code.jquery.com/jquery-3.5.1.min.js"></script>
+<!--===============================================================================================-->
+<script src="https://cdn.jsdelivr.net/npm/popper.js@1.16.0/dist/umd/popper.min.js"></script>
+<!--===============================================================================================-->
+<script src="https://stackpath.bootstrapcdn.com/bootstrap/4.5.0/js/bootstrap.min.js"></script>
+<!--===============================================================================================-->
 
 </body>
 
