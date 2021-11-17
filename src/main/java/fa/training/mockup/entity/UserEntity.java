@@ -40,7 +40,7 @@ public class UserEntity {
     @Column(name = "lastname", nullable = false)
     private String lastname;
 
-    @ManyToMany
+    @ManyToMany(fetch = FetchType.EAGER)
     @JoinTable(name = "user_role", joinColumns = @JoinColumn(name = "userid"), inverseJoinColumns = @JoinColumn(name = "roleid"))
     List<RoleEntity> role = new ArrayList<>();
 

@@ -24,12 +24,24 @@
 
         &nbsp;
 
-        <li>
-            <a id="3" href="#" onclick="onclick_load(this.id)">
+        <li sec:authorize="isAuthenticated()">
+            <span sec:authentication="name"></span>
+        </li>
+
+        <li sec:authorize="isAuthenticated()">
+            <a id="3" th:href="@{/user/logout}" onclick="onclick_load(this.id)">
                 <i class='bx bx-log-out'></i>
                 <span class="links_name">Logout</span>
             </a>
             <span class="tooltip">Logout</span>
+        </li>
+        <li sec:authorize="!isAuthenticated()">
+            <a id="3" th:href="@{/user/login}" onclick="onclick_load(this.id)">
+                <i class='bx bx-log-out'></i>
+
+                <span class="links_name">Login</span>
+            </a>
+            <span class="tooltip">Login</span>
         </li>
 
     </ul>
