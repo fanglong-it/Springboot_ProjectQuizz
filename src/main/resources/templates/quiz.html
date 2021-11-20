@@ -65,7 +65,7 @@
                             <div class="search-box">
 
                                 <i class="material-icons">&#xE8B6;</i>
-                                <form th:action="@{/course/search}" method="get">
+                                <form th:action="@{/quiz/search}" method="get">
                                     <input type="text" class="form-control" name="keyword" th:value="${keyword}"
                                            placeholder="Search&hellip;">
 
@@ -81,18 +81,18 @@
                     <thead>
                     <tr>
                         <th>Id</th>
-                        <th>Course Name</th>
-                        <th>Description</th>
-                        <th>Actions</th>
+                        <th>Name</th>
+                        <th>Content</th>
+                        <th>Action</th>
                     </tr>
                     </thead>
                     <tbody>
-                    <tr th:each="course: ${LIST_COURSE}">
-                        <td th:text="${course.id}"></td>
-                        <td th:text="${course.courseName}"></td>
-                        <td th:text="${course.description}"></td>
+                    <tr th:each="quiz: ${LIST_QUIZ}">
+                        <td th:text="${quiz.id}"></td>
+                        <td th:text="${quiz.name}"></td>
+                        <td th:text="${quiz.content}"></td>
                         <td>
-                            <a th:href="@{'/quiz/view/' + ${course.id}}" class="btn btn-primary text-light">View Quiz</a>
+                            <a th:href="@{'/quiz/joinPage/' + ${quiz.id}}" class="btn btn-primary text-light">Join Quiz</a>
                         </td>
                     </tr>
 

@@ -25,11 +25,7 @@ public class AnswerEntity {
     @Column(name = "content", length = 100)
     private String content;
 
-    @Column(name = "createat", length = 100)
-    private String createAt;
 
-    @Column(name = "updateat", length = 100)
-    private String updateAt;
 
     @Column(name = "correctanswer")
     private boolean correctAnswer;
@@ -37,6 +33,7 @@ public class AnswerEntity {
     @ManyToOne
     @JoinColumn(name = "question_id")
     private QuestionEntity questionEntity;
+
 
 
     public long getId() {
@@ -55,21 +52,6 @@ public class AnswerEntity {
         this.content = content;
     }
 
-    public String getCreateAt() {
-        return createAt;
-    }
-
-    public void setCreateAt(String createAt) {
-        this.createAt = createAt;
-    }
-
-    public String getUpdateAt() {
-        return updateAt;
-    }
-
-    public void setUpdateAt(String updateAt) {
-        this.updateAt = updateAt;
-    }
 
     public boolean isCorrectAnswer() {
         return correctAnswer;

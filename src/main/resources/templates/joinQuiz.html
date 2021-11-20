@@ -62,42 +62,23 @@
                         <div class="col-sm-4">
 
 
-                            <div class="search-box">
-
-                                <i class="material-icons">&#xE8B6;</i>
-                                <form th:action="@{/course/search}" method="get">
-                                    <input type="text" class="form-control" name="keyword" th:value="${keyword}"
-                                           placeholder="Search&hellip;">
-
-                                </form>
-                            </div>
 
 
                         </div>
 
                     </div>
                 </div>
-                <table class="table table-striped table-hover table-bordered">
-                    <thead>
-                    <tr>
-                        <th>Id</th>
-                        <th>Course Name</th>
-                        <th>Description</th>
-                        <th>Actions</th>
-                    </tr>
-                    </thead>
-                    <tbody>
-                    <tr th:each="course: ${LIST_COURSE}">
-                        <td th:text="${course.id}"></td>
-                        <td th:text="${course.courseName}"></td>
-                        <td th:text="${course.description}"></td>
-                        <td>
-                            <a th:href="@{'/quiz/view/' + ${course.id}}" class="btn btn-primary text-light">View Quiz</a>
-                        </td>
-                    </tr>
 
-                    </tbody>
-                </table>
+                <form th:action="@{/quiz/attemp}" th:object="${QUIZ_ENTITY}" method="post" >
+                    <h1>Please Enter Code For <span th:text="*{name}"></span></h1>
+                    <input type="hidden" th:value="*{password}" name="password">
+                    <input type="text" name="joinPassword" class="form-control" th:value="${joinPassword}">
+                    <button type="submit" class="form-control btn-info">Join</button>
+
+                    <div th:if="${MSG != null}">
+                        <p class="text-danger" th:text="${MSG}"></p>
+                    </div>
+                </form>
             </div>
         </div>
     </div>

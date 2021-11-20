@@ -26,18 +26,6 @@ public class QuestionEntity {
     @Column(name = "question")
     private String question;
 
-    @Column(name = "content")
-    private String content;
-
-    @Column(name = "active")
-    private int active ;
-
-    @Column(name = "createAt")
-    private String createAt;
-
-    @Column(name = "updateAt")
-    private String updateAt;
-
     @ManyToOne
     @JoinColumn(name = "quiz_id")
     private QuizEntity quizEntity;
@@ -61,37 +49,7 @@ public class QuestionEntity {
         this.question = question;
     }
 
-    public String getContent() {
-        return content;
-    }
 
-    public void setContent(String content) {
-        this.content = content;
-    }
-
-    public int getActive() {
-        return active;
-    }
-
-    public void setActive(int active) {
-        this.active = active;
-    }
-
-    public String getCreateAt() {
-        return createAt;
-    }
-
-    public void setCreateAt(String createAt) {
-        this.createAt = createAt;
-    }
-
-    public String getUpdateAt() {
-        return updateAt;
-    }
-
-    public void setUpdateAt(String updateAt) {
-        this.updateAt = updateAt;
-    }
 
     public QuizEntity getQuizEntity() {
         return quizEntity;
