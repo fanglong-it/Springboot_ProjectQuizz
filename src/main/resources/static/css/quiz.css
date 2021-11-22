@@ -74,9 +74,7 @@ label.box .circle {
     display: inline-block
 }
 
-input[type="radio"] {
-    display: none
-}
+
 
 .btn.btn-primary {
     border-radius: 25px;

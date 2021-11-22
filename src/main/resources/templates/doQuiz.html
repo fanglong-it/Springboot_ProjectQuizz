@@ -2,68 +2,54 @@
 <html lang="en" xmlns:th="https://www.thymeleaf.org">
 
 <head>
-<meta charset="UTF-8">
-<meta http-equiv="X-UA-Compatible" content="IE=edge">
-<meta name="viewport" content="width=device-width, initial-scale=1.0">
-<link rel="stylesheet"
-	href="https://cdn.jsdelivr.net/npm/bootstrap@5.0.0-beta1/dist/css/bootstrap.min.css">
-<link rel="stylesheet"
-	href="https://cdn.jsdelivr.net/npm/bootstrap@5.0.0-beta1/dist/js/bootstrap.bundle.min.js">
-<link rel="stylesheet" type="text/css" href="/css/quiz.css">
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet"
+          href="https://cdn.jsdelivr.net/npm/bootstrap@5.0.0-beta1/dist/css/bootstrap.min.css">
+    <link rel="stylesheet"
+          href="https://cdn.jsdelivr.net/npm/bootstrap@5.0.0-beta1/dist/js/bootstrap.bundle.min.js">
+    <link rel="stylesheet" type="text/css" href="/css/quiz.css">
 
-<title>Document</title>
+    <title>Document</title>
 </head>
 
 <body>
-	<div class="container mb-5">
-		<form th:action="@{/quiz/attemp}" method="post">
-			<div class="row">
-				<div class="col-12">
-					<div>
 
-						<div th:each="map: ${LIST_QUESTIONS}">
-							<div th:each="mapEntry: ${map}">
-								<p class="fw-bold" th:text="${mapEntry.key.question}"></p>
-								<!--  -->
-
-								<div th:each="value: ${mapEntry.value}">
-									<input type="radio" name="box" th:field="${value.content}" value="a" />
-									
-										<label th:for="${value.content}" class="box first">
-										
-											<div class="course">
-											
-												<span class="circle"></span> 
-												
-													<span class="subject"> 
-													
-													<lable th:text="${value.content}"></lable>
-													
-												</span>
-											</div>
-										</label>
-								</div>
+<div class="container mb-5">
 
 
+    <form th:action="@{/quiz/check}" method="post">
 
+        <div class="row">
+            <div class="col-12">
+                <div>
+                    <ol type="1">
 
-							</div>
-						</div>
-						<div class="col-12">
-							<div class="d-flex justify-content-center">
-								<button type="submit" class="btn btn-primary px-4 py-2 fw-bold"
-									style="margin-right: 700px;">back</button>
+                        <li th:each="map: ${LIST_QUESTIONS}">
+                            <span th:text="${map.key.question}"></span>
+                            <input type="hidden" name="questionId" th:value="${map.key.id}">
+                            <ol type="A">
+                                <li th:each="value: ${map.value}">
+                                    <input type="radio" th:name="answer_+${map.key.id}" th:value="${value.id}">
+                                    <span th:text="${value.content}"></span>
+                                </li>
+                            </ol>
+                        </li>
 
-								<button type="submit" class="btn btn-primary px-4 py-2 fw-bold">continue</button>
+                    </ol>
 
-								<!-- <button type="submit" class="btn btn-primary px-4 py-2 fw-bold">Submit</button> -->
-							</div>
-						</div>
-					</div>
-				</div>
-			</div>
-		</form>
-	</div>
+                    <div class="col-12">
+                        <div class="d-flex justify-content-center">
+                            <button type="submit" class="btn btn-primary px-4 py-2 fw-bold">check</button>
+                            <!-- <button type="submit" class="btn btn-primary px-4 py-2 fw-bold">Submit</button> -->
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </form>
+</div>
 
 </body>
 

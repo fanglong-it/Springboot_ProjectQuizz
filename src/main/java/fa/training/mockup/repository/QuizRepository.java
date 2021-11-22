@@ -8,4 +8,5 @@ import java.util.List;
 public interface QuizRepository extends JpaRepository<QuizEntity, Long> {
     List<QuizEntity> findAllByCourseEntity_Id(Long id);
     List<QuizEntity> findAllByNameContains(String name);
+
 }
