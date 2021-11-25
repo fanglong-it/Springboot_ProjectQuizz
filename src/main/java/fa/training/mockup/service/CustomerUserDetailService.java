@@ -25,7 +25,7 @@ public class CustomerUserDetailService implements UserDetailsService {
         if(userEntity == null){
             throw new UsernameNotFoundException("USERNAME NOT FOUND!");
         }
-// put thong tin vao security duy tri thong tin nguoi dung
+        // put thong tin vao security duy tri thong tin nguoi dung
         List<GrantedAuthority> authorities = new ArrayList<GrantedAuthority>();
         for (RoleEntity role : userEntity.getRole()) {
             authorities.add(new SimpleGrantedAuthority(role.getName()));
@@ -33,6 +33,8 @@ public class CustomerUserDetailService implements UserDetailsService {
 
         MyUser myUser = new MyUser(userEntity.getLastname(), userEntity.getPassword(), true, true, true, true, authorities);
         myUser.setFullname(userEntity.getFirstname() + userEntity.getLastname());
+        myUser.setId(userEntity.getId());
+        myUser.setEmail(userEntity.getEmail());
         return myUser;
 
     }

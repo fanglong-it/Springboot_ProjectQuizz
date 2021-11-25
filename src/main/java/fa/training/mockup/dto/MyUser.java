@@ -16,6 +16,24 @@ public class MyUser extends User {
     }
 
     String fullname;
+    String email;
+    Long id;
+
+    public String getEmail() {
+        return email;
+    }
+
+    public void setEmail(String email) {
+        this.email = email;
+    }
+
+    public Long getId() {
+        return id;
+    }
+
+    public void setId(Long id) {
+        this.id = id;
+    }
 
     public String getFullname() {
         return fullname;

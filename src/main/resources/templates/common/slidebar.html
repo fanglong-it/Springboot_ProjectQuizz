@@ -7,7 +7,7 @@
     <ul class="nav-list">
 
         <li>
-            <a id="1" href="#" onclick="onclick_load(this.id)">
+            <a id="1" th:href="@{/course/}" onclick="onclick_load(this.id)">
                 <i class='bx bx-grid-alt'></i>
                 <span class="links_name">Dashboard</span>
             </a>
@@ -15,7 +15,7 @@
         </li>
         &nbsp;
         <li>
-            <a id="2" href="#" onclick="onclick_load(this.id)">
+            <a id="2" th:href="@{/grade/view}">
                 <i class='bx bx-user'></i>
                 <span class="links_name">Grades</span>
             </a>

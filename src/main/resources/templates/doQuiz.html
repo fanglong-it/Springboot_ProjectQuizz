@@ -20,7 +20,7 @@
 
 
     <form th:action="@{/quiz/check}" method="post">
-
+        <input type="hidden" name="quizId" th:value="${QUIZ_ID}">
         <div class="row">
             <div class="col-12">
                 <div>

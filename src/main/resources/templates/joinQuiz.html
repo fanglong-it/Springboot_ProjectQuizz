@@ -68,6 +68,7 @@
 
                 <form th:action="@{/quiz/attempt}" th:object="${QUIZ_ENTITY}" method="post" >
                     <h1>Please Enter Code For <span th:text="*{name}"></span></h1>
+                    <input type="hidden" th:value="*{id}" name="id">
                     <input type="hidden" th:value="*{password}" name="password">
                     <input type="text" name="joinPassword" class="form-control" th:value="${joinPassword}">
                     <button type="submit" class="form-control btn-info">Join</button>
