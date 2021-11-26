@@ -56,7 +56,7 @@
                 <div class="table-title">
                     <div class="row">
                         <div class="col-sm-8">
-                            <h2>List <b>Course</b></h2>
+                            <h2>List <b>Quiz</b></h2>
                         </div>
 
                         <div class="col-sm-4">
@@ -76,6 +76,13 @@
                         </div>
 
                     </div>
+
+                    <div class="row" sec:authorize="hasAuthority('ADMIN')">
+                        <hr>
+                        <div class="col-sm-8">
+                            <a th:href="@{|/quiz/createPage/${QUIZ_ID}|}" class="btn btn-info">Create Quiz</a>
+                        </div>
+                    </div>
                 </div>
                 <table class="table table-striped table-hover table-bordered">
                     <thead>
@@ -91,8 +98,11 @@
                         <td th:text="${quiz.id}"></td>
                         <td th:text="${quiz.name}"></td>
                         <td th:text="${quiz.content}"></td>
-                        <td>
+                        <td sec:authorize="hasAuthority('USER')">
                             <a th:href="@{'/quiz/joinPage/' + ${quiz.id}}" class="btn btn-primary text-light">Join Quiz</a>
+                        </td>
+                        <td sec:authorize="hasAuthority('ADMIN')">
+                            <a th:href="@{'/quiz/viewQuiz/' + ${quiz.id}}" class="btn btn-primary text-light">View Quiz</a>
                         </td>
                     </tr>
 

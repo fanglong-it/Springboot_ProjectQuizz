@@ -18,8 +18,17 @@ public class CourseService {
         return courseEntities;
     }
 
+    public CourseEntity getCourseById(Long id){
+        CourseEntity courseEntity = repo.getById(id);
+        return courseEntity;
+    }
+
     public List<CourseEntity> findAll() {
         List<CourseEntity> courseEntities = repo.findAll();
         return courseEntities;
+    }
+
+    public void saveCourse(CourseEntity courseEntity){
+        repo.save(courseEntity);
     }
 }

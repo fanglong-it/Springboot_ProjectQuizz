@@ -34,6 +34,10 @@ public class QuizService {
         return quizEntityList;
     }
 
+    public void saveQuizEntity(QuizEntity quizEntity){
+        quizRepository.save(quizEntity);
+    }
+
 
 
 

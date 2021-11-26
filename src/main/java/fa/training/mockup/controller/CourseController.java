@@ -6,9 +6,7 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.data.repository.query.Param;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
-import org.springframework.web.bind.annotation.GetMapping;
-import org.springframework.web.bind.annotation.PathVariable;
-import org.springframework.web.bind.annotation.RequestMapping;
+import org.springframework.web.bind.annotation.*;
 import org.springframework.web.servlet.ModelAndView;
 
 import java.util.List;
@@ -45,6 +43,21 @@ public class CourseController {
         model.addAttribute("LIST_COURSE", courseEntities);
         return "index";
 
+    }
+
+    @GetMapping("/createPage")
+    public String createPage(Model model){
+            CourseEntity courseEntity = new CourseEntity();
+
+            model.addAttribute("COURSE", courseEntity);
+            return "createCourse";
+    }
+
+    @PostMapping("/create")
+    public String createCourse(@ModelAttribute("COURSE") CourseEntity courseEntity, Model model){
+        service.saveCourse(courseEntity);
+        model.addAttribute("MSG", "Add success!");
+        return "redirect:/";
     }
 
 
