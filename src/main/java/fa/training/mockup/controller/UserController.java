@@ -12,8 +12,11 @@
 
 package fa.training.mockup.controller;
 
+import fa.training.mockup.entity.RoleEntity;
 import fa.training.mockup.entity.UserEntity;
+import fa.training.mockup.repository.RoleRepository;
 import fa.training.mockup.repository.UserRepository;
+import fa.training.mockup.service.RoleService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.data.repository.query.Param;
 import org.springframework.security.core.Authentication;
@@ -25,8 +28,10 @@ import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.*;
 import org.springframework.web.servlet.ModelAndView;
 
+import javax.management.relation.Role;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
+import java.util.List;
 
 @Controller
 @RequestMapping("user")
@@ -35,6 +40,9 @@ public class UserController {
 
     @Autowired
     private UserRepository repo;
+
+    @Autowired
+    private RoleService roleService;
 
     @GetMapping("/login")
     public String loginpage() {
@@ -54,6 +62,9 @@ public class UserController {
         String rawPassword = user.getPassword();
         if (rawPassword.equals(rePassword)) {
             String newPassword = bCryptPasswordEncoder.encode(rawPassword);
+            long index = 2;
+            RoleEntity roleEntity = roleService.getRoleById(index);
+            user.getRole().add(roleEntity);
             user.setPassword(newPassword);
             repo.save(user);
             return "redirect:/user/login?success";
