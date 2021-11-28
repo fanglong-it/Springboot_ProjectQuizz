@@ -66,19 +66,20 @@
                 <div>
                     <form th:action="@{/quiz/createQuiz}" method="post">
                         <div th:object="${QUIZ}">
-                            quiz name:
+                        <div class="col-4">
+                            Quiz name:
                             <input class="form-control" name="name" th:value="*{name}">
-                            content:
+                            Content:
                             <input class="form-control" name="content" th:value="*{content}">
-                            password:
+                            Password:
                             <input class="form-control" name="description" th:value="*{password}"></input>
 
-                            course:
+                            Course:
                             <input class="form-control" name="course_id" th:value="${COURSE.id}" type="hidden">
                             <input class="form-control" name="course_name" th:value="${COURSE.courseName}" readonly>
-
-
-                            <input class="form-control btn-info" type="submit" value="Create">
+						</div>
+							&nbsp;
+                            <input class="form-control btn btn-outline-primary" style="width: 83px;margin-top: 15px;margin-left: 6px;" type="submit" value="Create">
 
                         </div>
                     </form>

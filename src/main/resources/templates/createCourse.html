@@ -66,12 +66,16 @@
                 <div>
                     <form th:action="@{/course/create}" method="post">
                         <div th:object="${COURSE}">
-                                course name:
+                        	<div class="col-4">
+                                Course name:
+                                &nbsp;
                                 <input class="form-control" name="courseName" th:value="*{courseName}">
-
                                 Description:
+                                &nbsp;
                                 <textarea class="form-control" name="description" th:value="*{description}"></textarea>
-                                <input class="form-control btn-info" type="submit" value="Create">
+                            </div>
+                                &nbsp;
+                                <input class="form-control btn btn-outline-primary" style="width: 83px;margin-top: 15px;margin-left: 6px;" type="submit" value="Create">
                         </div>
                     </form>
 
