@@ -1,0 +1,42 @@
+<div class="sidebar">
+	<div class="logo-details">
+		<i class='bx bxl-c-plus-plus icon'></i>
+
+		<div class="logo_name" sec:authorize="isAuthenticated()">
+			<span sec:authentication="name"></span>
+		</div>
+
+
+		<div class="logo_name" sec:authorize="!isAuthenticated()">
+			<span>User Name</span>
+		</div>
+
+
+		<i class='bx bx-menu' id="btn"></i>
+	</div>
+	<ul class="nav-list">
+
+		<li><a id="1" th:href="@{/course/}"
+			onclick="onclick_load(this.id)"> <i class='bx bx-grid-alt'></i> <span
+				class="links_name">Dashboard</span>
+		</a> <span class="tooltip">Dashboard</span></li> &nbsp;
+		
+		 
+		
+		<li><a id="2" th:href="@{/grade/view}" sec:authorize="isAuthenticated()"> <i class='bx bx-user'></i>
+				<span class="links_name">Grades</span>
+		</a> <span class="tooltip">Grades</span></li> &nbsp;
+		
+		
+
+		<li sec:authorize="isAuthenticated()"><a id="3"
+			th:href="@{/user/logout}" onclick="onclick_load(this.id)"> <i
+				class='bx bx-log-out'></i> <span class="links_name">Logout</span>
+		</a> <span class="tooltip">Logout</span></li>
+		<li sec:authorize="!isAuthenticated()"><a id="3"
+			th:href="@{/user/login}" onclick="onclick_load(this.id)"> <i
+				class='bx bx-log-in'></i> <span class="links_name">Login</span>
+		</a> <span class="tooltip">Login</span></li>
+
+	</ul>
+</div>
