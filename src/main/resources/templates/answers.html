@@ -56,43 +56,93 @@
                 <div class="table-title">
                     <div class="row">
                         <div class="col-sm-8">
-                            <h2>Create <b>Quiz</b></h2>
+                            <h2>List <b>Answer</b></h2>
                         </div>
 
-
+                        <div class="col-sm-4">
+                        </div>
 
                     </div>
-                </div>
-                <div>
-                    <form th:action="@{/quiz/createQuiz}" method="post">
-                        <div th:object="${QUIZ}">
-                        <div class="col-4">
-                            Quiz name:
-                            <input class="form-control" name="name" th:value="*{name}">
-                            Content:
-                            <input class="form-control" name="content" th:value="*{content}">
-                            Password:
-                            <input class="form-control" name="description" th:value="*{password}"></input>
 
-                            Course:
-                            <input class="form-control" name="course_id" th:value="${COURSE.id}" type="hidden">
-                            <input class="form-control" name="course_name" th:value="${COURSE.courseName}" readonly>
-						</div>
-							&nbsp;
-                            <input class="form-control btn btn-outline-primary" style="width: 83px;margin-top: 15px;margin-left: 6px;" type="submit" value="Create">
-
+                    <div class="row" sec:authorize="hasAuthority('ADMIN')">
+                        <hr>
+                        <div class="col-sm-8">
+                            <a th:href="@{|/quiz/createPage/${QUIZ_ID}|}" class="btn btn-info">Create Quiz</a>
                         </div>
-                    </form>
-
+                    </div>
                 </div>
+                <table class="table table-striped table-hover table-bordered">
+                    <thead>
+                    <tr>
+                        <th>Answer</th>
+               			<th>Is Correct</th>
+                        <th>Action</th>
+                    </tr>
+                    </thead>
+                    <tbody>
+                    <tr th:each="ans: ${LIST_ANSWERS}">
+                        <td th:text="${ans.content}"></td>
+                        <td th:text="${ans.correctAnswer}"></td>
+                        
+                        <td>
+                            <a href="#" class="btn btn-primary text-light">Edit</a>
+                        </td>
+                    </tr>
 
+                    </tbody>
+                </table>
             </div>
         </div>
     </div>
     <!--  -->
 </section>
 
-
+<section id="grades" class="home-section" style="display: none;">
+    <div class="container">
+        <div class="table-responsive">
+            <div class="table-wrapper">
+                <div class="table-title">
+                    <div class="row">
+                        <div class="col-sm-12">
+                            <h2>Score <b>Report</b></h2>
+                        </div>
+                    </div>
+                </div>
+                <table class="table table-bordered">
+                    <thead>
+                    <tr>
+                        <th>Name</th>
+                        <th>Course</th>
+                        <th>Grade</th>
+                    </tr>
+                    </thead>
+                    <tbody>
+                    <tr>
+                        <td>John Doe</td>
+                        <td>Java</td>
+                        <td>100/100</td>
+                    </tr>
+                    <tr>
+                        <td>John Doe</td>
+                        <td>Java</td>
+                        <td>100/100</td>
+                    </tr>
+                    <tr>
+                        <td>John Doe</td>
+                        <td>Java</td>
+                        <td>100/100</td>
+                    </tr>
+                    <tr>
+                        <td>John Doe</td>
+                        <td>Java</td>
+                        <td>100/100</td>
+                    </tr>
+                    </tbody>
+                </table>
+            </div>
+        </div>
+    </div>
+</section>
 
 
 <script>

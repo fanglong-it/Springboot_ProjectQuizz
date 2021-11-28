@@ -56,7 +56,7 @@
                 <div class="table-title">
                     <div class="row">
                         <div class="col-sm-8">
-                            <h2>Create <b>Quiz</b></h2>
+                            <h2>Add <b>Question</b></h2>
                         </div>
 
 
@@ -64,19 +64,17 @@
                     </div>
                 </div>
                 <div>
-                    <form th:action="@{/quiz/createQuiz}" method="post">
-                        <div th:object="${QUIZ}">
+                    <form th:action="@{/quiz/createQuestion}" method="post">
+                        <div th:object="${QUESTION}">
                         <div class="col-4">
-                            Quiz name:
+                            Question:
                             <input class="form-control" name="name" th:value="*{name}">
-                            Content:
-                            <input class="form-control" name="content" th:value="*{content}">
-                            Password:
-                            <input class="form-control" name="description" th:value="*{password}"></input>
-
-                            Course:
-                            <input class="form-control" name="course_id" th:value="${COURSE.id}" type="hidden">
-                            <input class="form-control" name="course_name" th:value="${COURSE.courseName}" readonly>
+                           	
+                           	
+                           	
+                            Quiz:
+                            <input class="form-control" name="course_id" th:value="${QUIZ.id}" type="hidden">
+                            <input class="form-control" name="course_name" th:value="${QUIZ.name}" readonly>
 						</div>
 							&nbsp;
                             <input class="form-control btn btn-outline-primary" style="width: 83px;margin-top: 15px;margin-left: 6px;" type="submit" value="Create">
