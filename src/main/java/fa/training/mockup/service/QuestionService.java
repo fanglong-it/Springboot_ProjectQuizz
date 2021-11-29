@@ -18,5 +18,22 @@ public class QuestionService {
 		List<QuestionEntity> questionEntities = repo.findAll();
 		return questionEntities;
 	}
+
+	public List<QuestionEntity> findAllQuestionByQuizId(Long id){
+		List<QuestionEntity> questionEntityList = repo.findAllByQuizEntity_Id(id);
+		return questionEntityList;
+	}
+
+
+	public void addQuestion(QuestionEntity questionEntity){
+		repo.save(questionEntity);
+	}
+
+	public QuestionEntity getById(long id){
+		QuestionEntity questionEntity = repo.getById(id);
+		return questionEntity;
+	}
+
+
 	
 }

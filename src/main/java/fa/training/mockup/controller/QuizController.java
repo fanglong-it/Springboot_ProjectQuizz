@@ -5,6 +5,7 @@ import fa.training.mockup.entity.*;
 import fa.training.mockup.repository.GradeRepository;
 import fa.training.mockup.repository.UserRepository;
 import fa.training.mockup.service.*;
+import org.dom4j.rule.Mode;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.data.repository.query.Param;
 import org.springframework.security.core.Authentication;
@@ -36,6 +37,7 @@ public class QuizController {
 
     @Autowired
     private GradeService gradeService;
+
     @Autowired
     private GradeRepository gradeRepository;
 
@@ -76,7 +78,7 @@ public class QuizController {
                 HashMap<QuestionEntity, List<AnswerEntity>> listquiz = new HashMap<>();
 
 
-                List<QuestionEntity> questionEntities = questService.findAllQuestion();
+                List<QuestionEntity> questionEntities = questService.findAllQuestionByQuizId(quizEntity.getId());
                 List<AnswerEntity> answerEntity = answerService.findAllAnswer();
 
                 for (QuestionEntity quest : questionEntities) {
@@ -167,6 +169,95 @@ public class QuizController {
 
 
     }
+
+    @GetMapping("/editQuiz/{id}")
+    public String editQuiz(@PathVariable("id") Long id, Model model){
+        List<QuestionEntity> questionEntityList = questService.findAllQuestionByQuizId(id);
+        model.addAttribute("LIST_QUESTIONS", questionEntityList);
+        model.addAttribute("QUIZ_ID", id);
+        return "questions";
+    }
+
+    @GetMapping("/viewAnswer/{id}")
+    public String viewAnswer(@PathVariable("id") Long id, Model model){
+        List<AnswerEntity> answerEntityList = answerService.findAllByQuestionId(id);
+        model.addAttribute("LIST_ANSWERS", answerEntityList);
+        model.addAttribute("QUESTION_ID", id);
+        return "answers";
+    }
+
+    @GetMapping("/createQuestion/{id}")
+    public String createQuestionPage(@PathVariable("id") Long id, Model model){
+        QuestionEntity questionEntity = new QuestionEntity();
+        model.addAttribute("QUESTION", questionEntity);
+        QuizEntity quizEntity = quizService.getQuizEntityById(id);
+        model.addAttribute("QUIZ", quizEntity);
+        return "createQuestions";
+    }
+
+    @PostMapping("/createQuestion")
+    public String createQuestion(@ModelAttribute("QUESTION") QuestionEntity questionEntity, @RequestParam("quiz_id") Long id){
+
+        QuizEntity quizEntity = quizService.getQuizEntityById(id);
+        questionEntity.setQuizEntity(quizEntity);
+        questService.addQuestion(questionEntity);
+        return "redirect:/quiz/editQuiz/"+id;
+
+    }
+
+
+    @GetMapping("/createAnswer/{id}")
+    public String createAnswerPage(@PathVariable("id")Long id, Model model){
+        AnswerEntity answerEntity = new AnswerEntity();
+        QuestionEntity questionEntity = questService.getById(id);
+        model.addAttribute("ANSWER", answerEntity);
+        model.addAttribute("QUESTION", questionEntity);
+        return "createAnswer";
+    }
+
+    @PostMapping("/createAnswer")
+    public String createAnswer(@ModelAttribute("ANSWER") AnswerEntity answerEntity, @RequestParam("question_id") Long id,
+                               @RequestParam("correctAnswer")String correct){
+        QuestionEntity questionEntity = questService.getById(id);
+        answerEntity.setQuestionEntity(questionEntity);
+        if(correct.equals("True")){
+            answerEntity.setCorrectAnswer(true);
+        }else{
+            answerEntity.setCorrectAnswer(false);
+        }
+        answerService.saveAnswer(answerEntity);
+        return "redirect:/quiz/viewAnswer/"+id;
+    }
+
+    @GetMapping("/deleteAnswer/{id}/{question_id}")
+    public String deleteAnswer(@PathVariable("id") Long id,@PathVariable("question_id") Long questionId, Model model){
+        answerService.removeAnswer(id);
+
+        return "redirect:/quiz/viewAnswer/"+questionId;
+    }
+
+    @GetMapping("/viewQuiz/{id}")
+    public String viewQuiz(@PathVariable("id")Long id, Model model, ModelMap modelMap){
+
+        HashMap<QuestionEntity, List<AnswerEntity>> listHashMap = new HashMap<>();
+        List<QuestionEntity> questionEntities = questService.findAllQuestionByQuizId(id);
+        List<AnswerEntity> answerEntity = answerService.findAllAnswer();
+
+        for (QuestionEntity quest : questionEntities) {
+            long questId = quest.getId();
+            List<AnswerEntity> tmpAns = new ArrayList<>();
+            for (AnswerEntity ans : answerEntity) {
+                if (ans.getQuestionEntity().getId() == questId) {
+                    tmpAns.add(ans);
+                }
+            }
+            listHashMap.put(quest, tmpAns);
+        }
+        modelMap.put("LIST_QUESTIONS", listHashMap);
+        return "viewQuiz";
+
+    }
+
 
 
 }

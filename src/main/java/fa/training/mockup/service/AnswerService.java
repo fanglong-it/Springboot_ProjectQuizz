@@ -13,8 +13,7 @@ import fa.training.mockup.repository.AnswerRepository;
 @Service
 public class AnswerService {
 
-	@Autowired
-	private QuestionRepository questionRepository;
+
 	@Autowired
 	private AnswerRepository answerRepository;
 	
@@ -30,6 +29,21 @@ public class AnswerService {
 			return true;
 		}
 		return false;
+	}
+
+
+	public List<AnswerEntity> findAllByQuestionId(Long id){
+		List<AnswerEntity> answerEntityList = answerRepository.findAnswerEntityByQuestionEntity_Id(id);
+		return  answerEntityList;
+	}
+
+	public void saveAnswer(AnswerEntity answerEntity){
+		answerRepository.save(answerEntity);
+	}
+
+
+	public void removeAnswer(Long id){
+		answerRepository.deleteById(id);
 	}
 	
 }

@@ -104,6 +104,9 @@
                         <td sec:authorize="hasAuthority('ADMIN')">
                             <a th:href="@{'/quiz/viewQuiz/' + ${quiz.id}}" class="btn btn-primary text-light">View Quiz</a>
                         </td>
+                        <td sec:authorize="hasAuthority('ADMIN')">
+                            <a th:href="@{'/quiz/editQuiz/' + ${quiz.id}}" class="btn btn-primary text-light">Edit</a>
+                        </td>
                     </tr>
 
                     </tbody>

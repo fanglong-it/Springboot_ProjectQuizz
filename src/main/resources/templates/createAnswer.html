@@ -64,19 +64,23 @@
                     </div>
                 </div>
                 <div>
-                    <form th:action="@{/quiz/createQuestion}" method="post">
-                        <div th:object="${QUESTION}">
+                    <form th:action="@{/quiz/createAnswer}" method="post">
+                        <div th:object="${ANSWER}">
                         <div class="col-4">
                             Question:
-                            <input class="form-control" name="name" th:value="*{name}">
+                            <input class="form-control" name="content" th:value="*{content}">
                            	
-                           	
-                           	
+                           	Correct:
+                            <select name="correctAnswer" class="select2-container">
+                                <option class="select2-results__option" value="True">True</option>
+                                <option class="select2-results__option" value="False" selected>False</option>
+                            </select>
+                           	<br>
                             Quiz:
-                            <input class="form-control" name="course_id" th:value="${QUIZ.id}" type="hidden">
-                            <input class="form-control" name="course_name" th:value="${QUIZ.name}" readonly>
+                            <input class="form-control" name="question_id" th:value="${QUESTION.id}" type="hidden">
+                            <input class="form-control" name="question_name" th:value="${QUESTION.question}" readonly>
 						</div>
-							&nbsp;
+							&nbsp
                             <input class="form-control btn btn-outline-primary" style="width: 83px;margin-top: 15px;margin-left: 6px;" type="submit" value="Create">
 
                         </div>

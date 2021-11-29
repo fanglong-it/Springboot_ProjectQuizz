@@ -67,32 +67,28 @@
                     <div class="row" sec:authorize="hasAuthority('ADMIN')">
                         <hr>
                         <div class="col-sm-8">
-                            <a th:href="@{|/quiz/createAnswer/${QUESTION_ID}|}" class="btn btn-info">Add Answer</a>
+                        <!-- comment-->
                         </div>
                     </div>
                 </div>
-                <table class="table table-striped table-hover table-bordered">
-                    <thead>
-                    <tr>
-                        <th>Answer</th>
-               			<th>Is Correct</th>
-                        <th>Action</th>
-                    </tr>
-                    </thead>
-                    <tbody>
-                    <form th:action="@{/quiz/saveAnswer}" method="post">
-                        <tr th:each="ans: ${LIST_ANSWERS}">
-                            <td th:text="${ans.content}"></td>
-                            <td th:text="${ans.correctAnswer}"></td>
+                <div class="col-12">
 
-                            <td>
-                                <input type="submit" class="btn btn-primary text-light" value="Edit">
-                                <a class="btn btn-danger" th:href="@{'/quiz/deleteAnswer/'+${ans.id}+'/'+${QUESTION_ID}}">Delete</a>
-                            </td>
-                        </tr>
-                    </form>
-                    </tbody>
-                </table>
+                    <ol type="1">
+                        <li th:each="map: ${LIST_QUESTIONS}">
+                            <span th:text="${map.key.question}"></span>
+                            <input type="hidden" name="questionId" th:value="${map.key.id}">
+                            <ol type="A">
+                                <li th:each="value: ${map.value}">
+                                    <input type="radio" th:name="answer_+${map.key.id}" th:value="${value.id}">
+                                    <span th:text="${value.content}"></span>
+                                </li>
+                            </ol>
+                        </li>
+
+                    </ol>
+
+
+                </div>
             </div>
         </div>
     </div>
