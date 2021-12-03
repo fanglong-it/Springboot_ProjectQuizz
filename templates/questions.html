@@ -67,7 +67,7 @@
                     <div class="row" sec:authorize="hasAuthority('ADMIN')">
                         <hr>
                         <div class="col-sm-8">
-                            <a th:href="@{|/quiz/createQuest/${QUIZ_ID}|}" class="btn btn-info">Add Question</a>
+                            <a th:href="@{|/quiz/createQuestion/${QUIZ_ID}|}" class="btn btn-info">Add Question</a>
                         </div>
                     </div>
                 </div>
@@ -83,7 +83,8 @@
                     <tr th:each="ques: ${LIST_QUESTIONS}">
                         <td th:text="${ques.question}"></td>
                         <td>
-                            <a th:href="@{'/quiz/viewAnswer/' + ${ques.id}}" class="btn btn-primary text-light">Edit</a>
+                            <a th:href="@{'/quiz/viewAnswer/' + ${ques.id}}" class="btn btn-primary text-light" style="margin-bottom: 10px">Edit</a>
+                            <a th:href="@{'/quiz/deleteQuestion/' + ${ques.id} + '/' +${QUIZ_ID} }" class="btn btn-danger text-light">Delete</a>
                         </td>
                     </tr>
 

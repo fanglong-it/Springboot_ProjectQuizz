@@ -68,11 +68,11 @@
                         <div th:object="${QUESTION}">
                         <div class="col-4">
                             Question:
-                            <input class="form-control" name="name" th:value="*{name}">
+                            <input class="form-control" name="question" th:value="*{question}">
                            	
                             Quiz:
-                            <input class="form-control" name="course_id" th:value="${QUIZ.id}" type="hidden">
-                            <input class="form-control" name="course_name" th:value="${QUIZ.name}" readonly>
+                            <input class="form-control" name="quiz_id" th:value="${QUIZ.id}" type="hidden">
+                            <input class="form-control" name="quiz_name" th:value="${QUIZ.name}" readonly>
 						</div>
 							&nbsp;
                             <input class="form-control btn btn-outline-primary" style="width: 83px;margin-top: 15px;margin-left: 6px;" type="submit" value="Create">
