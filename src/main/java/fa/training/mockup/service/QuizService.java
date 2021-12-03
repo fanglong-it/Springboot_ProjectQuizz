@@ -39,6 +39,10 @@ public class QuizService {
     }
 
 
+    public void deleteQuiz(Long id){
+        quizRepository.deleteById(id);
+    }
+
 
 
 

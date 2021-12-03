@@ -80,7 +80,7 @@
                     <div class="row" sec:authorize="hasAuthority('ADMIN')">
                         <hr>
                         <div class="col-sm-8">
-                            <a th:href="@{|/quiz/createPage/${QUIZ_ID}|}" class="btn btn-info">Create Quiz</a>
+                            <a th:href="@{|/quiz/createPage/${COURSE_ID}|}" class="btn btn-info">Create Quiz</a>
                         </div>
                     </div>
                 </div>
@@ -102,10 +102,10 @@
                             <a th:href="@{'/quiz/joinPage/' + ${quiz.id}}" class="btn btn-primary text-light">Join Quiz</a>
                         </td>
                         <td sec:authorize="hasAuthority('ADMIN')">
-                            <a th:href="@{'/quiz/viewQuiz/' + ${quiz.id}}" class="btn btn-primary text-light">View Quiz</a>
-                        </td>
-                        <td sec:authorize="hasAuthority('ADMIN')">
+                            <a th:href="@{'/quiz/viewQuiz/' + ${quiz.id}}" class="btn btn-info text-light">View Quiz</a>
+
                             <a th:href="@{'/quiz/editQuiz/' + ${quiz.id}}" class="btn btn-primary text-light">Edit</a>
+                            <a th:href="@{'/quiz/deleteQuiz/' + ${quiz.id} +'/' +${COURSE_ID}}" class="btn btn-danger text-light">delete</a>
                         </td>
                     </tr>
 

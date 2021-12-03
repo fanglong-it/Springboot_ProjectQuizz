@@ -34,6 +34,10 @@ public class QuestionService {
 		return questionEntity;
 	}
 
+	public void removeQuestion(Long id){
+		repo.deleteById(id);
+	}
+
 
 	
 }

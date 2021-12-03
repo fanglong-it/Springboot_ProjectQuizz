@@ -84,6 +84,7 @@
                         <td th:text="${ques.question}"></td>
                         <td>
                             <a th:href="@{'/quiz/viewAnswer/' + ${ques.id}}" class="btn btn-primary text-light">Edit</a>
+                            <a th:href="@{'/quiz/deleteQuestion/' + ${ques.id} + '/' +${QUIZ_ID} }" class="btn btn-danger text-light">Delete</a>
                         </td>
                     </tr>
 

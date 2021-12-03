@@ -49,7 +49,7 @@ public class QuizController {
 
         List<QuizEntity> quizEntityList = quizService.findALlQuizEntitiesById(id);
         model.addAttribute("LIST_QUIZ", quizEntityList);
-        model.addAttribute("QUIZ_ID", id);
+        model.addAttribute("COURSE_ID", id);
         return "quiz";
     }
 
@@ -256,6 +256,36 @@ public class QuizController {
         modelMap.put("LIST_QUESTIONS", listHashMap);
         return "viewQuiz";
 
+    }
+
+    @GetMapping("/deleteQuestion/{id}/{quizId}")
+    public String deleteQuestion(@PathVariable("id") Long questionId, @PathVariable("quizId") Long quizId, Model model){
+
+        List<AnswerEntity> answerEntityList = answerService.findAllByQuestionId(questionId);
+        for (int i = 0; i < answerEntityList.size(); i++) {
+            Long answerEntityId = answerEntityList.get(i).getId();
+            answerService.removeAnswer(answerEntityId);
+        }
+        questService.removeQuestion(questionId);
+        return "redirect:/quiz/editQuiz/"+quizId;
+    }
+
+    @GetMapping("/deleteQuiz/{id}/{courseId}")
+    public String deleteQuiz(@PathVariable("id") Long quizId, @PathVariable("courseId") Long courseId, Model model){
+
+        List<QuestionEntity> questionEntityList = questService.findAllQuestionByQuizId(quizId);
+        for (QuestionEntity quest: questionEntityList
+             ) {
+            Long questionId = quest.getId();
+            List<AnswerEntity> answerEntityList = answerService.findAllByQuestionId(questionId);
+            for (int i = 0; i < answerEntityList.size(); i++) {
+                answerService.removeAnswer(answerEntityList.get(i).getId());
+            }
+            questService.removeQuestion(questionId);
+        }
+        quizService.deleteQuiz(quizId);
+
+        return "redirect:/quiz/view/"+courseId;
     }
 
 

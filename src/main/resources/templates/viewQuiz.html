@@ -67,27 +67,25 @@
                     <div class="row" sec:authorize="hasAuthority('ADMIN')">
                         <hr>
                         <div class="col-sm-8">
-                        <!-- comment-->
+                            <!-- comment-->
                         </div>
                     </div>
                 </div>
-                <div class="col-12">
-
-                    <ol type="1">
-                        <li th:each="map: ${LIST_QUESTIONS}">
-                            <span th:text="${map.key.question}"></span>
-                            <input type="hidden" name="questionId" th:value="${map.key.id}">
-                            <ol type="A">
-                                <li th:each="value: ${map.value}">
-                                    <input type="radio" th:name="answer_+${map.key.id}" th:value="${value.id}">
-                                    <span th:text="${value.content}"></span>
-                                </li>
-                            </ol>
-                        </li>
-
-                    </ol>
-
-
+                <div class="row">
+                    <div class="col-12">
+                        <ol type="1">
+                            <li th:each="map: ${LIST_QUESTIONS}">
+                                <span th:text="${map.key.question}"></span>
+                                <input type="hidden" name="questionId" th:value="${map.key.id}">
+                                <ol type="A">
+                                    <li th:each="value: ${map.value}">
+                                        <input type="radio" th:name="answer_+${map.key.id}" th:value="${value.id}">
+                                        <span th:text="${value.content}"></span>
+                                    </li>
+                                </ol>
+                            </li>
+                        </ol>
+                    </div>
                 </div>
             </div>
         </div>
