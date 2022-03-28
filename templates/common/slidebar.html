@@ -23,7 +23,7 @@
 		
 		 
 		
-		<li><a id="2" th:href="@{/grade/view}" sec:authorize="isAuthenticated()"> <i class='bx bx-user'></i>
+		<li><a id="2" th:href="@{/grade/view}" sec:authorize="hasRole('USER')"> <i class='bx bx-user'></i>
 				<span class="links_name">Grades</span>
 		</a> <span class="tooltip">Grades</span></li> &nbsp;
 		

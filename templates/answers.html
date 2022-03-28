@@ -67,7 +67,7 @@
                     <div class="row" sec:authorize="hasAuthority('ADMIN')">
                         <hr>
                         <div class="col-sm-8">
-                            <a th:href="@{|/quiz/createPage/${QUIZ_ID}|}" class="btn btn-info">Create Quiz</a>
+                            <a th:href="@{|/quiz/createAnswer/${QUESTION_ID}|}" class="btn btn-info">Add Answer</a>
                         </div>
                     </div>
                 </div>
@@ -80,15 +80,17 @@
                     </tr>
                     </thead>
                     <tbody>
-                    <tr th:each="ans: ${LIST_ANSWERS}">
-                        <td th:text="${ans.content}"></td>
-                        <td th:text="${ans.correctAnswer}"></td>
-                        
-                        <td>
-                            <a href="#" class="btn btn-primary text-light">Edit</a>
-                        </td>
-                    </tr>
+                    <form th:action="@{/quiz/saveAnswer}" method="post">
+                        <tr th:each="ans: ${LIST_ANSWERS}">
+                            <td th:text="${ans.content}"></td>
+                            <td th:text="${ans.correctAnswer}"></td>
 
+                            <td>
+                                <input type="submit" style="margin:5px" class="btn btn-primary text-light" value="Edit">
+                                <a class="btn btn-danger text-light" th:href="@{'/quiz/deleteAnswer/'+${ans.id}+'/'+${QUESTION_ID}}">Delete</a>
+                            </td>
+                        </tr>
+                    </form>
                     </tbody>
                 </table>
             </div>

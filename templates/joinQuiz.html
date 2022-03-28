@@ -56,7 +56,7 @@
                 <div class="table-title">
                     <div class="row">
                         <div class="col-sm-8">
-                            <h2>List <b>Course</b></h2>
+                            
                         </div>
 
                         <div class="col-sm-4">
@@ -67,11 +67,12 @@
                 </div>
 
                 <form th:action="@{/quiz/attempt}" th:object="${QUIZ_ENTITY}" method="post" >
-                    <h1>Please Enter Code For <span th:text="*{name}"></span></h1>
+                    <h1 style="text-align:center">Please Enter Code For <br><span th:text="*{name}"></span></h1>
                     <input type="hidden" th:value="*{id}" name="id">
                     <input type="hidden" th:value="*{password}" name="password">
-                    <input type="text" name="joinPassword" class="form-control" th:value="${joinPassword}">
-                    <button type="submit" class="form-control btn-info">Join</button>
+                    <input type="text" name="joinPassword" class="form-control" th:value="${joinPassword}" placeholder="Enter password to do quiz">
+                    &nbsp;
+                    <button type="submit" class="form-control btn btn-info">Join</button>
 
                     <div th:if="${MSG != null}">
                         <p class="text-danger" th:text="${MSG}"></p>
