@@ -2,10 +2,8 @@ package fa.training.mockup.controller;
 
 import fa.training.mockup.dto.MyUser;
 import fa.training.mockup.entity.*;
-import fa.training.mockup.repository.GradeRepository;
 import fa.training.mockup.repository.UserRepository;
 import fa.training.mockup.service.*;
-import org.dom4j.rule.Mode;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.data.repository.query.Param;
 import org.springframework.security.core.Authentication;
@@ -38,8 +36,8 @@ public class QuizController {
     @Autowired
     private GradeService gradeService;
 
-    @Autowired
-    private GradeRepository gradeRepository;
+    // @Autowired
+    // private GradeRepository gradeRepository;
 
     @Autowired
     private UserRepository userRepository;

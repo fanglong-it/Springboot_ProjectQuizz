@@ -14,7 +14,6 @@ package fa.training.mockup.controller;
 
 import fa.training.mockup.entity.RoleEntity;
 import fa.training.mockup.entity.UserEntity;
-import fa.training.mockup.repository.RoleRepository;
 import fa.training.mockup.repository.UserRepository;
 import fa.training.mockup.service.RoleService;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -26,13 +25,8 @@ import org.springframework.security.web.authentication.logout.SecurityContextLog
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.*;
-import org.springframework.web.servlet.ModelAndView;
-
-import javax.management.relation.Role;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
-import java.util.List;
-
 @Controller
 @RequestMapping("user")
 public class UserController {

@@ -7,7 +7,6 @@ import org.springframework.data.repository.query.Param;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.*;
-import org.springframework.web.servlet.ModelAndView;
 
 import java.util.List;
 
@@ -38,7 +37,7 @@ public class CourseController {
     @GetMapping("/")
     public String homePage(Model model){
 
-        ModelAndView modelAndView = new ModelAndView("index");
+        // ModelAndView modelAndView = new ModelAndView("index");
         List<CourseEntity> courseEntities = service.findAll();
         model.addAttribute("LIST_COURSE", courseEntities);
         return "index";

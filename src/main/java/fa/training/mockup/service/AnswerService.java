@@ -1,9 +1,5 @@
 package fa.training.mockup.service;
-
 import java.util.List;
-
-import fa.training.mockup.entity.QuestionEntity;
-import fa.training.mockup.repository.QuestionRepository;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
